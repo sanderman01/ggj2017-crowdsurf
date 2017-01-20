@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 
 public class SwitchingCharacter : MonoBehaviour {
-    int playercount;
-    List<Character> characters = new List<Character>();
-
 	// Use this for initialization
 	void Start () {
 		
@@ -17,8 +14,8 @@ public class SwitchingCharacter : MonoBehaviour {
 
     public void Switch(Player p)
     {
-        int newCharacterindex = p.currentCharacter.index + playercount;
-        Character newCharacter = characters[newCharacterindex];
+        int newCharacterindex = p.currentCharacter.index + GameSettings.playercount;
+        Character newCharacter = Audience.characters[newCharacterindex];
         p.currentCharacter = newCharacter;    
     }
 }
