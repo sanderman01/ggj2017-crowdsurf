@@ -19,9 +19,6 @@ public class Character : MonoBehaviour
     [SerializeField]
     private float armLength = 0.6f;
 
-    [SerializeField]
-    private float floorY = 0;
-
     private bool grounded = true;
 
     const float axisMargin = 0.5f;
@@ -64,20 +61,11 @@ public class Character : MonoBehaviour
 
     void FixedUpdate()
     {
-        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-
-        // Jumping on the beat
-        Vector3 p = rigidbody.position;
-        p.y += Mathf.Sin((Time.fixedTime + p.x * 0.7f) * Mathf.PI * 4) * 0.01f;
-        p.y += Mathf.Sin((Time.fixedTime + p.x * 0.15f) * Mathf.PI * 4) * 0.03f;
-        rigidbody.position = p;
-
-        // Land on the floor
-        if (transform.position.y < floorY)
+        if (transform.position.y < 0)
         {
-            Debug.Log("landed");
-            transform.position = new Vector3(transform.position.x, floorY, transform.position.z);
-            rigidbody.velocity = Vector2.zero;
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             grounded = true;
         }
     }
