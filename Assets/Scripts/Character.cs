@@ -23,6 +23,10 @@ public class Character : MonoBehaviour
 
     const float axisMargin = 0.5f;
 
+    private float FloorY {
+        get { return 0; }
+    }
+
     private Color characterColor;
     public Color CharacterColor
     {
@@ -61,12 +65,20 @@ public class Character : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (transform.position.y < 0)
+        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
+
+        // Jumping on the beat
+        Vector3 p = rigidbody.position;
+        p.y += Mathf.Sin((Time.fixedTime + p.x * 0.7f) * Mathf.PI * 4) * 0.01f;
+        p.y += Mathf.Sin((Time.fixedTime + p.x * 0.15f) * Mathf.PI * 4) * 0.03f;
+        rigidbody.position = p;
+
+        // Land on the floor
+        if (transform.position.y < FloorY)
         {
             Debug.Log("landed");
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            rigidbody.velocity = Vector2.zero;
             grounded = true;
         }
     }
