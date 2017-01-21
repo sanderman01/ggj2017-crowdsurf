@@ -19,13 +19,12 @@ public class Character : MonoBehaviour
     [SerializeField]
     private float armLength = 0.6f;
 
+    [SerializeField]
+    private float floorY = 0;
+
     private bool grounded = true;
 
     const float axisMargin = 0.5f;
-
-    private float FloorY {
-        get { return 0; }
-    }
 
     private Color characterColor;
     public Color CharacterColor
@@ -74,10 +73,10 @@ public class Character : MonoBehaviour
         rigidbody.position = p;
 
         // Land on the floor
-        if (transform.position.y < FloorY)
+        if (transform.position.y < floorY)
         {
             Debug.Log("landed");
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            transform.position = new Vector3(transform.position.x, floorY, transform.position.z);
             rigidbody.velocity = Vector2.zero;
             grounded = true;
         }
