@@ -17,6 +17,5 @@ public class SwitchingCharacter : MonoBehaviour {
         int newCharacterindex = Audience.lastAssignedIndex++;
         Character newCharacter = Audience.characters[newCharacterindex];
         p.currentCharacter = newCharacter;
-        Audience.lastAssignedIndex++;
     }
 }
