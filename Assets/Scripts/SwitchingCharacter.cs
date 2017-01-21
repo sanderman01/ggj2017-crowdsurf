@@ -14,12 +14,18 @@ public class SwitchingCharacter : MonoBehaviour {
 
     public void Switch(Player p)
     {
-        int newCharacterindex = Audience.lastAssignedIndex + 1;
-        if(Audience.characters.Count > newCharacterindex)
+        if (Audience.characters.Count > Audience.currentIndex)
         {
-            Character newCharacter = Audience.characters[newCharacterindex];
+            Character oldCharacter = p.currentCharacter;
+            if(oldCharacter != null)
+            {
+                oldCharacter.ResetColor();
+            }
+
+            Character newCharacter = Audience.characters[Audience.currentIndex];
             p.currentCharacter = newCharacter;
-            Audience.lastAssignedIndex = newCharacterindex;
+            p.currentCharacter.CharacterColor = p.color;
+            Audience.currentIndex++;
         }
         
     }

@@ -19,11 +19,22 @@ public class Character : MonoBehaviour
 
     const float axisMargin = 0.5f;
 
-    public Color PlayerColor
+    private Color characterColor;
+    public Color CharacterColor
     {
         // TODO Change the color of the character to the player color by modifying the material color.
-        get;
-        set;
+        get { return characterColor; }
+        set {
+            characterColor = value;
+            Renderer render = GetComponentsInChildren<Renderer>()[0];
+            render.material.color = value;
+        }
+    }
+
+    public void ResetColor()
+    {
+        // TODO set some default color
+        CharacterColor = Color.white;
     }
 
     void Update()
