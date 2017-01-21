@@ -44,8 +44,8 @@ public class SwitchingCharacter : MonoBehaviour {
             }
             if(p.currentCharacter != null)
             {
-                newIndex = p.currentCharacter.index++;
-            }    
+                newIndex = p.currentCharacter.index + 1;
+            }
             Character newCharacter = null;
             bool hasNewCharacter = false;
             while(hasNewCharacter == false && newIndex < Audience.characters.Count)
