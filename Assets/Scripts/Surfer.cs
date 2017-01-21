@@ -28,6 +28,8 @@ public class Surfer : MonoBehaviour {
     public float MaxHeight { get { return maxHeight; } }
     private float maxHeight;
 
+    private int currentCollisionCount = 0;
+
     /// <summary>
     /// Determines wether the rigidbodies are active or disabled.
     /// </summary>
@@ -56,9 +58,9 @@ public class Surfer : MonoBehaviour {
 
     void Update() {
         CalcMinMaxAverage();
+        Stats.currentGame.game_distance = AveragePosition.x;
+        Stats.currentGame.jumps_highest = Mathf.Max(Stats.currentGame.jumps_highest, MaxHeight);
 
-        if (Input.GetKeyDown(KeyCode.Space))
-            RigidbodyActive = !RigidbodyActive;
     }
 
     // Calculate the minimum height, maximum height, and average position of all children.
@@ -81,6 +83,7 @@ public class Surfer : MonoBehaviour {
     }
 
     public void OnCollisionEnter2D(Collision2D coll) {
+        currentCollisionCount += 1;
 
         // Respond to important collisions by sending events to other systems that may be interested.
         string tag = coll.gameObject.tag;
@@ -93,6 +96,16 @@ public class Surfer : MonoBehaviour {
                 if (OnHitObstacle != null)
                     OnHitObstacle(this, coll.contacts[0].point);
                 break;
+        }
+    }
+
+    public void OnCollisionExit2D(Collision2D coll) {
+        currentCollisionCount -= 1;
+
+        if(currentCollisionCount == 0) {
+            // We are no longer colliding with anything. this means we just started a jump.
+            Stats.currentGame.jumps_total += 1;
+            Debug.Log("jump " + Stats.currentGame.jumps_total);
         }
     }
 }

@@ -16,6 +16,7 @@ public static class Stats {
         private int total_games_reset;
 
         private float best_duration;
+        private float best_distance;
 
         private int jumps_total;
         private float jumps_longest_airtime;
@@ -42,6 +43,7 @@ public static class Stats {
             }
 
             globals.best_duration = Mathf.Max(globals.best_duration, game.game_duration);
+            globals.best_distance = Mathf.Max(globals.best_distance, game.game_distance);
             globals.jumps_total += game.jumps_total;
             globals.jumps_longest_airtime = Mathf.Max(globals.jumps_longest_airtime, game.jumps_longest_airtime);
             globals.jumps_highest = Mathf.Max(globals.jumps_highest, game.jumps_highest);
@@ -56,6 +58,7 @@ public static class Stats {
         public float game_begin;
         public float game_end;
         public float game_duration;
+        public float game_distance;
         public GameEndedReason game_end_reason;
 
         public int jumps_total;
@@ -65,9 +68,9 @@ public static class Stats {
         // TODO More stats here...
     }
 
-    private static GlobalStats globals = new GlobalStats(); // maybe save/load from file in future?
-    private static GameStats currentGame;
-    private static GameStats previousGame;
+    public static GlobalStats globals = new GlobalStats(); // maybe save/load from file in future?
+    public static GameStats currentGame;
+    public static GameStats previousGame;
 
     public static void StartGame() {
         previousGame = currentGame;
