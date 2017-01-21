@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class Controls {
 
-    [Range(0, 3)]
+    [Range(1, 4)]
     int joystickID;
 
     public void SetJoystickID(int id)
@@ -15,43 +15,43 @@ public class Controls {
 
     public float GetLeftAxisX()
     {
-        return Input.GetAxis("Joystick" + (joystickID + 1) + "LeftX");
+        return Input.GetAxis("Joystick" + (joystickID) + "LeftX");
     }
 
     public float GetLeftAxisY()
     {
-        return Input.GetAxis("Joystick" + (joystickID + 1) + "LeftY");
+        return Input.GetAxis("Joystick" + (joystickID) + "LeftY");
     }
 
     public float GetRightAxisX()
     {
-        return Input.GetAxis("Joystick" + (joystickID + 1) + "RightX");
+        return Input.GetAxis("Joystick" + (joystickID) + "RightX");
     }
 
     public float GetRightAxisY()
     {
-        return Input.GetAxis("Joystick" + (joystickID + 1) + "RightY");
+        return Input.GetAxis("Joystick" + (joystickID) + "RightY");
     }
 
     public float GetTrigger()
     {
-        return Input.GetAxis("Joystick" + (joystickID + 1) + "Trigger");
+        return Input.GetAxis("Joystick" + (joystickID) + "Trigger");
     }
 
     public bool ADown()
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button0);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button0);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button0);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button0);
                  
         }
@@ -62,16 +62,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button0);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button0);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button0);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button0);
                  
         }
@@ -82,16 +82,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button1);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button1);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button1);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button1);
                  
         }
@@ -102,16 +102,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button1);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button1);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button1);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button1);
                  
         }
@@ -122,16 +122,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button1);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button1);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button1);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button1);
                  
         }
@@ -142,16 +142,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button1);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button1);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button1);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button1);
                  
         }
@@ -162,16 +162,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button2);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button2);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button2);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button2);
                  
         }
@@ -182,16 +182,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button2);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button2);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button2);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button2);
                  
         }
@@ -202,16 +202,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button2);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button2);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button2);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button2);
                  
         }
@@ -222,16 +222,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button3);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button3);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button3);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button3);
                  
         }
@@ -242,16 +242,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button3);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button3);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button3);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button3);
                  
         }
@@ -262,16 +262,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button3);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button3);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button3);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button3);
                  
         }
@@ -282,16 +282,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button4);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button4);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button4);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button4);
                  
         }
@@ -302,16 +302,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button4);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button4);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button4);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button4);
                  
         }
@@ -322,16 +322,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button4);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button4);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button4);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button4);
                  
         }
@@ -342,16 +342,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button5);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button5);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button5);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button5);
                  
         }
@@ -362,16 +362,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button5);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button5);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button5);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button5);
                  
         }
@@ -382,16 +382,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button5);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button5);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button5);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button5);
                  
         }
@@ -402,16 +402,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button6);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button6);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button6);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button6);
                  
         }
@@ -422,16 +422,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button6);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button6);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button6);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button6);
                  
         }
@@ -442,16 +442,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button6);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button6);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button6);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button6);
                  
         }
@@ -462,16 +462,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button7);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button7);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button7);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button7);
                  
         }
@@ -482,16 +482,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button7);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button7);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button7);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button7);
                  
         }
@@ -502,16 +502,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button7);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button7);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button7);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button7);
                  
         }
@@ -522,16 +522,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button8);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button8);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button8);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button8);
                  
         }
@@ -542,16 +542,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button8);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button8);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button8);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button8);
                  
         }
@@ -562,16 +562,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button8);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button8);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button8);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button8);
                  
         }
@@ -582,16 +582,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyDown(KeyCode.Joystick1Button9);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyDown(KeyCode.Joystick2Button9);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyDown(KeyCode.Joystick3Button9);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyDown(KeyCode.Joystick4Button9);
                  
         }
@@ -602,16 +602,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKey(KeyCode.Joystick1Button9);
                  
-            case 1:
+            case 2:
                 return Input.GetKey(KeyCode.Joystick2Button9);
                  
-            case 2:
+            case 3:
                 return Input.GetKey(KeyCode.Joystick3Button9);
                  
-            case 3:
+            case 4:
                 return Input.GetKey(KeyCode.Joystick4Button9);
                  
         }
@@ -622,16 +622,16 @@ public class Controls {
     {
         switch (joystickID)
         {
-            case 0:
+            case 1:
                 return Input.GetKeyUp(KeyCode.Joystick1Button9);
                  
-            case 1:
+            case 2:
                 return Input.GetKeyUp(KeyCode.Joystick2Button9);
                  
-            case 2:
+            case 3:
                 return Input.GetKeyUp(KeyCode.Joystick3Button9);
                  
-            case 3:
+            case 4:
                 return Input.GetKeyUp(KeyCode.Joystick4Button9);
                 
         }

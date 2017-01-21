@@ -16,10 +16,12 @@ public class Player : MonoBehaviour {
     //string jumpButton = string.Format("Jump{0}", playerNumber);
     string jumpButton;
     string switchButton;
+    Controls controls = new Controls();
 
     void Start()
     {
-        SetPlayerNumber(1);
+        SetPlayerNumber(playerNumber);
+        controls.SetJoystickID(playerNumber);
     }
 
     public void SetPlayerNumber(int playerNumber)
@@ -44,12 +46,12 @@ public class Player : MonoBehaviour {
         currentCharacter.moveLeftArm(leftStick);
         currentCharacter.moveRightArm(rightStick);
 
-        if (Input.GetButtonDown(jumpButton))
+        if (controls.ADown())
         {
             currentCharacter.jump();
         }
 
-        if (Input.GetButtonDown(switchButton))
+        if (controls.SelectDown())
         {
             SwitchingCharacter switching = GameObject.FindObjectOfType<SwitchingCharacter>();
             switching.Switch(this);
