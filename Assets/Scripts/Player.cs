@@ -53,8 +53,13 @@ public class Player : MonoBehaviour {
 
         if (controls.SelectDown())
         {
-            SwitchingCharacter switching = GameObject.FindObjectOfType<SwitchingCharacter>();
+            SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
             switching.Switch(this);
+        }
+        if (controls.StartDown())
+        {
+            SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
+            switching.SwitchBack(this);
         }
     }
 }

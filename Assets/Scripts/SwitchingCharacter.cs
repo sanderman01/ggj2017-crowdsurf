@@ -37,12 +37,11 @@ public class SwitchingCharacter : MonoBehaviour {
         if (Audience.characters.Count > Audience.currentIndex)
         {
             Character oldCharacter = p.currentCharacter;
-            if (oldCharacter != null)
-            {
-                oldCharacter.ResetColor();
-                oldCharacter.hasPlayer = false;
-            }
             int newIndex = 0;
+            if(p.currentCharacter == null)
+            {
+                newIndex = Audience.currentIndex;
+            }
             if(p.currentCharacter != null)
             {
                 newIndex = p.currentCharacter.index++;
@@ -56,7 +55,7 @@ public class SwitchingCharacter : MonoBehaviour {
                 {
                     hasNewCharacter = true;
                 }
-                else
+                if (hasNewCharacter == false)
                 {
                     newIndex++;
                 }
@@ -66,8 +65,53 @@ public class SwitchingCharacter : MonoBehaviour {
                 p.currentCharacter = newCharacter;
                 p.currentCharacter.CharacterColor = p.color;
                 Audience.currentIndex = newIndex;
-                newCharacter.hasPlayer = true;        
+                newCharacter.hasPlayer = true;
+                if (oldCharacter != null)
+                {
+                    oldCharacter.ResetColor();
+                    oldCharacter.hasPlayer = false;
+                }
             }   
+        }
+
+    }
+
+    public void SwitchBack(Player p)
+    {
+        if (Audience.characters.Count > Audience.currentIndex)
+        {
+            Character oldCharacter = p.currentCharacter;
+            int newIndex = 0;
+            if (p.currentCharacter != null)
+            {
+                newIndex = p.currentCharacter.index-1;
+            }
+            Character newCharacter = null;
+            bool hasNewCharacter = false;
+            while (hasNewCharacter == false && newIndex >= 0)
+            {
+                newCharacter = Audience.characters[newIndex];
+                if (newCharacter.hasPlayer == false)
+                {
+                    hasNewCharacter = true;
+                }
+                else
+                {
+                    newIndex = newIndex-1;
+                }
+            }
+            if (hasNewCharacter)
+            {
+                p.currentCharacter = newCharacter;
+                p.currentCharacter.CharacterColor = p.color;
+                p.currentCharacter.index = newIndex;
+                newCharacter.hasPlayer = true;
+                if (oldCharacter != null)
+                {
+                    oldCharacter.ResetColor();
+                    oldCharacter.hasPlayer = false;
+                }
+            }
         }
 
     }
