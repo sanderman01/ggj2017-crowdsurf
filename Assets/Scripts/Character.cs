@@ -5,6 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     public int index;
+    public bool hasPlayer;
 
     [SerializeField]
     private Transform rightArmPivot;
