@@ -14,8 +14,9 @@ public class SwitchingCharacter : MonoBehaviour {
 
     public void Switch(Player p)
     {
-        int newCharacterindex = p.currentCharacter.index + GameSettings.playerCount;
+        int newCharacterindex = Audience.lastAssignedIndex++;
         Character newCharacter = Audience.characters[newCharacterindex];
-        p.currentCharacter = newCharacter;    
+        p.currentCharacter = newCharacter;
+        Audience.lastAssignedIndex++;
     }
 }

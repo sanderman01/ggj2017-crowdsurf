@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Audience : MonoBehaviour {
     public static List<Character> characters;
+    public static int lastAssignedIndex;
 
     void Awake()
     {

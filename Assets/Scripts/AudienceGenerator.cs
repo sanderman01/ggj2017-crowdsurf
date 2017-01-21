@@ -10,16 +10,23 @@ public class AudienceGenerator : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		for(int i=0;i< AmountOfCharactersToCreateAtStart; i++)
+        for (int i = 0; i < AmountOfCharactersToCreateAtStart; i++)
         {
             GenerateNewCharacter();
         }
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        int lastCharacter = Audience.characters.Count - 1;
+        Vector3 screenPoint = Camera.main.WorldToViewportPoint(Audience.characters[lastCharacter].transform.position);
+        bool onScreen = screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y < 1;
+        if (onScreen)
+        {
+            GenerateNewCharacter();
+        }
+    }
+
     public void GenerateNewCharacter()
     {
         Vector2 newLocation;
