@@ -22,19 +22,62 @@ public class Surfer : MonoBehaviour {
     public Vector3 AveragePosition { get { return averagePosition; } }
     private Vector3 averagePosition;
 
-    void Update() {
-        averagePosition = CalcAverage();
+    public float MinHeight { get { return minHeight; } }
+    private float minHeight;
+
+    public float MaxHeight { get { return maxHeight; } }
+    private float maxHeight;
+
+    /// <summary>
+    /// Determines wether the rigidbodies are active or disabled.
+    /// </summary>
+    public bool RigidbodyActive {
+        get { return rigidbodyActive; }
+        set {
+            rigidbodyActive = value;
+            foreach (Transform child in transform) {
+                Rigidbody2D body = child.GetComponent<Rigidbody2D>();
+                if (rigidbodyActive) {
+                    body.bodyType = RigidbodyType2D.Dynamic;
+                } else {
+                    body.bodyType = RigidbodyType2D.Kinematic;
+                    body.velocity = Vector2.zero;
+                    body.angularVelocity = 0;
+                }
+
+            }
+        }
+    }
+    private bool rigidbodyActive;
+
+    void Start() {
+        RigidbodyActive = false;
     }
 
-    // Calculate the average position of all children.
-    private Vector3 CalcAverage() {
+    void Update() {
+        CalcMinMaxAverage();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            RigidbodyActive = !RigidbodyActive;
+    }
+
+    // Calculate the minimum height, maximum height, and average position of all children.
+    private void CalcMinMaxAverage() {
+        float minHeight = float.MaxValue;
+        float maxHeight = float.MinValue;
+
         int n = transform.childCount;
         float m = 1f / n;
         Vector3 pos = Vector3.zero;
         foreach (Transform child in transform) {
             pos += child.position * m;
+            minHeight = Mathf.Min(minHeight, pos.y);
+            maxHeight = Mathf.Max(maxHeight, pos.y);
         }
-        return pos;
+
+        this.averagePosition = pos;
+        this.minHeight = minHeight;
+        this.maxHeight = maxHeight;
     }
 
     public void OnCollisionEnter2D(Collision2D coll) {
