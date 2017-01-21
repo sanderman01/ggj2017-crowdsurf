@@ -34,7 +34,8 @@ public class SurfCamera : MonoBehaviour {
 
     void Update() {
         // Steer towards surfer.
-        Vector3 targetPosition = surfer.AveragePosition * 0.75f;
+        Vector3 targetPosition = surfer.AveragePosition;
+        targetPosition.y *= 0.75f;
         Vector3 targetDirection = targetPosition - transform.position;
         float distance = targetDirection.magnitude;
         float speed = distance / period;
