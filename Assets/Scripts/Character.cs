@@ -59,8 +59,12 @@ public class Character : MonoBehaviour
         if (rightArmInput.magnitude > axisMargin)
         {
             rightArmInput = rightArmInput.normalized;
+            Quaternion currentRotation = transform.rotation;
             Quaternion targetRotation = Quaternion.FromToRotation(Vector2.right, rightArmInput);
-            rightArmPivot.transform.rotation = targetRotation;
+            float rotationMovementAngle = targetRotation.eulerAngles.z - currentRotation.eulerAngles.z;
+            rightArmPivot.GetComponent<Rigidbody2D>().MoveRotation(rotationMovementAngle);
+
+            //rightArmPivot.transform.rotation = targetRotation;
         }
     }
 

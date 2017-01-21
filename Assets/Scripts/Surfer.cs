@@ -81,7 +81,6 @@ public class Surfer : MonoBehaviour {
     }
 
     public void OnCollisionEnter2D(Collision2D coll) {
-        Debug.Log(string.Format("Collided with: {0}", coll.gameObject.name), this);
 
         // Respond to important collisions by sending events to other systems that may be interested.
         string tag = coll.gameObject.tag;
