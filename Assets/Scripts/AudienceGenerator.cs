@@ -6,12 +6,15 @@ public class AudienceGenerator : MonoBehaviour {
     public float distanceBetweenCharacters;
     public Character characterPrefab;
     public string characterName;
-    public int AmountOfCharactersToCreateAtStart;
+    public int AmountOfCharactersToCreateAtStart = 4;
 
 	// Use this for initialization
 	void Start () {
+
+        Debug.Log("generate audience");
         for (int i = 0; i < AmountOfCharactersToCreateAtStart; i++)
         {
+            Debug.Log("create character" + i);
             GenerateNewCharacter();
         }
     }

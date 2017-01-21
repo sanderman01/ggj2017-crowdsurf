@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public bool active;
+    public bool Active { get { return active; } }
+    private bool active = true;
     public int playerNumber;
     public Color color;
     public Character currentCharacter;
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour {
             currentCharacter.jump();
         }
 
-        if (Input.GetButton(switchButton))
+        if (Input.GetButtonDown(switchButton))
         {
             SwitchingCharacter switching = GameObject.FindObjectOfType<SwitchingCharacter>();
             switching.Switch(this);
