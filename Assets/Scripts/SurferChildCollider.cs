@@ -20,6 +20,7 @@ public class SurferChildCollider : MonoBehaviour {
     //void OnCollisionStay2D(Collision2D coll) {
     //}
 
-    //void OnCollisionExit2D(Collision2D coll) {
-    //}
+    void OnCollisionExit2D(Collision2D coll) {
+        parent.OnCollisionExit2D(coll);
+    }
 }
