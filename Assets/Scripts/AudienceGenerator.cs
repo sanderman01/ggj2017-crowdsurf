@@ -44,6 +44,6 @@ public class AudienceGenerator : MonoBehaviour {
         Character newCharacter = Instantiate(characterPrefab, new Vector3(newLocation.x,newLocation.y),Quaternion.identity);
         Audience.characters.Add(newCharacter);
         newCharacter.gameObject.name = string.Concat(characterName, Audience.characters.Count);
-        newCharacter.index = Audience.characters.Count;
+        newCharacter.index = Audience.characters.Count-1;
     }
 }
