@@ -16,6 +16,9 @@ public class Character : MonoBehaviour
     [SerializeField]
     private float jumpDuration = 0.3f;
 
+    [SerializeField]
+    private float armLength = 0.6f;
+
     private bool grounded = true;
 
     const float axisMargin = 0.5f;
@@ -38,8 +41,22 @@ public class Character : MonoBehaviour
         CharacterColor = Color.white;
     }
 
-    void Update()
+    void Update() 
     {
+    }
+
+    [ContextMenu("SetArmLength")]
+    private void SetArmLength() {
+        // Set arm length
+        Transform leftArm = leftArmPivot.GetChild(0);
+        Transform rightArm = rightArmPivot.GetChild(0);
+        Vector3 armScale = leftArm.transform.localScale;
+        armScale.x = armLength;
+        Vector3 armPosition = leftArm.localPosition;
+        armPosition.x = armLength * 0.5f;
+
+        leftArm.localScale = rightArm.localScale = armScale;
+        leftArm.localPosition = rightArm.localPosition = armPosition;
     }
 
     void FixedUpdate()
