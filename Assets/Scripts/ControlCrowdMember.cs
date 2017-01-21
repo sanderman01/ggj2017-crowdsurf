@@ -19,6 +19,29 @@ public class ControlCrowdMember : MonoBehaviour {
 
     const float axisMargin = 0.5f;
 
+    public Color PlayerColor
+    {
+        // TODO Change the color of the character to the player color by modifying the material color.
+        get;
+        set;
+    }
+
+    void Update()
+    {
+    }
+
+    void FixedUpdate()
+    {
+        if (transform.position.y < 0)
+        {
+            Debug.Log("landed");
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            grounded = true;
+        }
+    }
+
     public void moveRightArm(Vector2 rightArmInput)
     {
         if(rightArmInput.magnitude > axisMargin)
@@ -50,35 +73,10 @@ public class ControlCrowdMember : MonoBehaviour {
 
     private IEnumerator jumpRoutine()
     {
-
         GetComponent<Rigidbody2D>().velocity = jumpVelocity;
         yield return new WaitForSeconds(jumpDuration);
-
         GetComponent<Rigidbody2D>().velocity = -jumpVelocity;
     }
 
-    //temporary: actual input should be done by player
-    void Update()
-    {
-        moveRightArm(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxis("Vertical")));
-        moveLeftArm(new Vector2(-Input.GetAxisRaw("Joystick1AnalogRightX"), Input.GetAxis("Joystick1AnalogRightY")));
-        
-        if (Input.GetButtonDown("Jump"))
-        {
-            Debug.Log("jump");
-            jump();
-        }
-    }
 
-    void FixedUpdate()
-    {
-        if (transform.position.y < 0)
-        {
-            Debug.Log("landed");
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-            grounded = true;
-        }
-    }
 }
