@@ -46,17 +46,17 @@ public class Player : MonoBehaviour {
         currentCharacter.moveLeftArm(leftStick);
         currentCharacter.moveRightArm(rightStick);
 
-        if (controls.ADown())
+        if (controls.ADown() || Mathf.Abs(controls.GetTrigger()) > 0.5f)
         {
             currentCharacter.jump();
         }
 
-        if (controls.SelectDown())
+        if (controls.RBDown())
         {
             SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
             switching.Switch(this);
         }
-        if (controls.StartDown())
+        if (controls.LBDown())
         {
             SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
             switching.SwitchBack(this);
