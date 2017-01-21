@@ -51,7 +51,7 @@ public class Surfer : MonoBehaviour {
     private bool rigidbodyActive;
 
     void Start() {
-        RigidbodyActive = false;
+        //RigidbodyActive = false;
     }
 
     void Update() {
