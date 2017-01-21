@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AudienceGenerator : MonoBehaviour {
-    public int distanceBetweenCharacters;
+    public float distanceBetweenCharacters;
     public Character characterPrefab;
     public string characterName;
     public int AmountOfCharactersToCreateAtStart;
