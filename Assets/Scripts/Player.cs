@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -61,5 +62,24 @@ public class Player : MonoBehaviour {
             SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
             switching.SwitchBack(this);
         }
+    }
+
+    /// <summary>
+    /// Attach this player to a character.
+    /// </summary>
+    public void Attach(Character c) {
+        if (currentCharacter != null) {
+            Detach();
+        }
+        c.hasPlayer = true;
+        currentCharacter = c;
+    }
+
+    /// <summary>
+    /// Detach this player from a character.
+    /// </summary>
+    public void Detach() {
+        currentCharacter.hasPlayer = false;
+        currentCharacter = null;
     }
 }

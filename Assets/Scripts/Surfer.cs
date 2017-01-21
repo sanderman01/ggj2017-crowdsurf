@@ -12,12 +12,12 @@ public class Surfer : MonoBehaviour {
     /// <summary>
     /// Event fired when the surfer hits the floor. First parameter is this surfer object. Second parameter is the collision contact point.
     /// </summary>
-    public static event System.Action<Surfer, Vector3> OnHitFloor;
+    public event System.Action<Surfer, Vector3> OnHitFloor;
 
     /// <summary>
     /// Event fired when the surfer hits an obstacle. First parameter is this surfer object. Second parameter is the collision contact point.
     /// </summary>
-    public static event System.Action<Surfer, Vector3> OnHitObstacle;
+    public event System.Action<Surfer, Vector3> OnHitObstacle;
 
     public Vector3 AveragePosition { get { return averagePosition; } }
     private Vector3 averagePosition;
