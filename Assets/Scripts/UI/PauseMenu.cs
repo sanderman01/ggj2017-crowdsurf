@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour {
+public class PauseMenu : MonoBehaviour
+{
 
     private GUIStyle normalButton;
     private GUIStyle selectedButton;
@@ -15,40 +16,39 @@ public class PauseMenu : MonoBehaviour {
     {
         normalButton = _GUISkins.FindStyle("Normal");
         selectedButton = _GUISkins.FindStyle("Selected");
-//        SetGUISKins(0);
+        buttonGUI = new GUIStyle[3];
+        SetGUISKins(0);
+        this.gameObject.SetActive(false);
     }
 
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.F5))
-        {
-            Restart();
-        }
-    }
-
- /*   public void NextOption()
+    public void NextOption()
     {
         SetGUISKins(selectedButtonInt + 1);
     }
 
+    public void OnEnable()
+    {
+        SetGUISKins(0);
+    }
+
     public void PreviousOption()
     {
-        if(selectedButtonInt == 0)
+        if (selectedButtonInt == 0)
         {
-            SetGUISKins(buttonGUI.Length);
+            SetGUISKins(buttonGUI.Length - 1);
         }
         else
         {
             SetGUISKins(selectedButtonInt - 1);
         }
-    }*/
+    }
 
-/*    public void SetGUISKins(int selected)
+    public void SetGUISKins(int selected)
     {
         selected = selected % buttonGUI.Length;
         for (int i = 0; i < buttonGUI.Length; i++)
         {
-            if(i == selected)
+            if (i == selected)
             {
                 buttonGUI[i] = _GUISkins.FindStyle("Selected");
             }
@@ -62,23 +62,40 @@ public class PauseMenu : MonoBehaviour {
 
     void OnGUI()
     {
-        if(GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 2 - Screen.height /6, Screen.width / 8 * 6, Screen.height / 6), "Resume", normalButton)) {
+        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 2 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Resume", buttonGUI[0]))
+        {
             GameObject.Find("PauseManager").GetComponent<PauseManager>().Pause();
         }
-        if(GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 3 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Restart", selectedButton))
+        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 3 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Restart", buttonGUI[1]))
         {
             Restart();
         }
-        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 4 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Quit", normalButton))
+        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 4 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Quit", buttonGUI[2]))
         {
             Application.Quit();
         }
     }
-    */
+
+    public void Select()
+    {
+        switch (selectedButtonInt)
+        {
+            case 0:
+                GameObject.Find("PauseManager").GetComponent<PauseManager>().Pause();
+                this.gameObject.SetActive(false);
+                break;
+            case 1:
+                Restart();
+                break;
+            case 2:
+                Application.Quit();
+                break;
+        }
+    }
+
     void Restart()
     {
         Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        
     }
 }
