@@ -44,16 +44,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button0);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button0);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button0);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button0);
-                break;
+                 
         }
         return false;
     }
@@ -64,16 +64,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button0);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button0);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button0);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button0);
-                break;
+                 
         }
         return false;
     }
@@ -84,16 +84,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button1);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button1);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button1);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button1);
-                break;
+                 
         }
         return false;
     }
@@ -104,16 +104,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button1);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button1);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button1);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button1);
-                break;
+                 
         }
         return false;
     }
@@ -124,16 +124,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button1);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button1);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button1);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button1);
-                break;
+                 
         }
         return false;
     }
@@ -144,16 +144,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button1);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button1);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button1);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button1);
-                break;
+                 
         }
         return false;
     }
@@ -164,16 +164,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button2);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button2);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button2);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button2);
-                break;
+                 
         }
         return false;
     }
@@ -184,16 +184,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button2);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button2);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button2);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button2);
-                break;
+                 
         }
         return false;
     }
@@ -204,16 +204,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button2);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button2);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button2);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button2);
-                break;
+                 
         }
         return false;
     }
@@ -224,16 +224,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button3);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button3);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button3);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button3);
-                break;
+                 
         }
         return false;
     }
@@ -244,16 +244,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button3);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button3);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button3);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button3);
-                break;
+                 
         }
         return false;
     }
@@ -264,16 +264,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button3);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button3);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button3);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button3);
-                break;
+                 
         }
         return false;
     }
@@ -284,16 +284,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button4);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button4);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button4);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button4);
-                break;
+                 
         }
         return false;
     }
@@ -304,16 +304,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button4);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button4);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button4);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button4);
-                break;
+                 
         }
         return false;
     }
@@ -324,16 +324,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button4);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button4);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button4);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button4);
-                break;
+                 
         }
         return false;
     }
@@ -344,16 +344,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button5);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button5);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button5);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button5);
-                break;
+                 
         }
         return false;
     }
@@ -364,16 +364,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button5);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button5);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button5);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button5);
-                break;
+                 
         }
         return false;
     }
@@ -384,16 +384,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button5);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button5);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button5);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button5);
-                break;
+                 
         }
         return false;
     }
@@ -404,16 +404,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button6);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button6);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button6);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button6);
-                break;
+                 
         }
         return false;
     }
@@ -424,16 +424,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button6);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button6);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button6);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button6);
-                break;
+                 
         }
         return false;
     }
@@ -444,16 +444,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button6);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button6);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button6);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button6);
-                break;
+                 
         }
         return false;
     }
@@ -464,16 +464,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button7);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button7);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button7);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button7);
-                break;
+                 
         }
         return false;
     }
@@ -484,16 +484,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button7);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button7);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button7);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button7);
-                break;
+                 
         }
         return false;
     }
@@ -504,16 +504,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button7);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button7);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button7);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button7);
-                break;
+                 
         }
         return false;
     }
@@ -524,16 +524,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button8);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button8);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button8);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button8);
-                break;
+                 
         }
         return false;
     }
@@ -544,16 +544,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button8);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button8);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button8);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button8);
-                break;
+                 
         }
         return false;
     }
@@ -564,16 +564,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button8);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button8);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button8);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button8);
-                break;
+                 
         }
         return false;
     }
@@ -584,16 +584,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyDown(KeyCode.Joystick1Button9);
-                break;
+                 
             case 1:
                 return Input.GetKeyDown(KeyCode.Joystick2Button9);
-                break;
+                 
             case 2:
                 return Input.GetKeyDown(KeyCode.Joystick3Button9);
-                break;
+                 
             case 3:
                 return Input.GetKeyDown(KeyCode.Joystick4Button9);
-                break;
+                 
         }
         return false;
     }
@@ -604,16 +604,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKey(KeyCode.Joystick1Button9);
-                break;
+                 
             case 1:
                 return Input.GetKey(KeyCode.Joystick2Button9);
-                break;
+                 
             case 2:
                 return Input.GetKey(KeyCode.Joystick3Button9);
-                break;
+                 
             case 3:
                 return Input.GetKey(KeyCode.Joystick4Button9);
-                break;
+                 
         }
         return false;
     }
@@ -624,16 +624,16 @@ public class Controls {
         {
             case 0:
                 return Input.GetKeyUp(KeyCode.Joystick1Button9);
-                break;
+                 
             case 1:
                 return Input.GetKeyUp(KeyCode.Joystick2Button9);
-                break;
+                 
             case 2:
                 return Input.GetKeyUp(KeyCode.Joystick3Button9);
-                break;
+                 
             case 3:
                 return Input.GetKeyUp(KeyCode.Joystick4Button9);
-                break;
+                
         }
         return false;
     }
