@@ -58,7 +58,7 @@ public class PauseManager : MonoBehaviour {
 
 	// Use this for initialization
 	public void Pause() {
-        if (isPaused)
+        if (!isPaused)
         {
             Time.timeScale = 1.0f;
             pauseUI.SetActive(false);

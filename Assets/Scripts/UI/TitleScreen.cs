@@ -8,6 +8,8 @@ using UnityEngine;
 /// </summary>
 public class TitleScreen : MonoBehaviour {
 
+    const string gameScene = "PrototypeSceneMerge";
+
     [SerializeField]
     private Color[] playerColors;
 
@@ -40,12 +42,23 @@ public class TitleScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         CheckPlayerActivity();
-
-        // TODO Transition to game scene.
-        //if(All4PlayersActive || (TimerEnded && nPlayers > 1) ) {
-        //    GoToGameScene();
-        //}
+        bool playersReady = CheckPlayersReady();
+        if (playersReady)
+            GoToGameScene();
 	}
+
+    private bool CheckPlayersReady() {
+        int nActivePlayers = 0;
+        bool allReady = true;
+        foreach(Player p in players) {
+            if(p.Active) {
+                nActivePlayers += 1;
+                allReady = allReady && p.Ready;
+            }
+        }
+
+        return nActivePlayers > 1 && allReady;
+    }
 
 
 
@@ -68,7 +81,9 @@ public class TitleScreen : MonoBehaviour {
     }
 
     private void GoToGameScene() {
-        // TODO GoToGameScene
-        throw new System.NotImplementedException();
+        foreach(Player p in players) {
+            p.Detach();
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene(gameScene);
     }
 }

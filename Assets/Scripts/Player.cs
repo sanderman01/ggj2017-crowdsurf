@@ -10,6 +10,9 @@ public class Player : MonoBehaviour {
     }
     private bool active = false;
     public bool Idle { get { return idle; } }
+
+    public bool Ready { get { return controls.AHold(); } }
+
     private bool idle; // TODO Detect Activity or Idling by checking current controller axis and button states
     public int playerNumber;
     public Color color;
