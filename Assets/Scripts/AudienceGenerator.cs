@@ -48,13 +48,17 @@ public class AudienceGenerator : MonoBehaviour {
         Audience.characters.Add(newCharacter);
         if(count % 2 == 0)
         {
-            AddSkin(newCharacter);
+            AddSkin(newCharacter, 0);
         }
-        
+        if (count % 4 == 0)
+        {
+            AddSkin(newCharacter, 1);
+        }
+
         newCharacter.gameObject.name = string.Concat(characterName, Audience.characters.Count);
         newCharacter.index = Audience.characters.Count-1;
     }
-    public void AddSkin(Character c)
+    public void AddSkin(Character c, int skin)
     {
         var shoulderRight = c.transform.Find("Shoulder_right/Arm/sprite");
         var shoulderLeft = c.transform.Find("Shoulder_left/Arm/sprite");
@@ -66,10 +70,10 @@ public class AudienceGenerator : MonoBehaviour {
         var sp3 = legs.GetComponent<SpriteRenderer>();
         var sp4 = shoulderRight.GetComponent<SpriteRenderer>();
         var sp5 = shoulderLeft.GetComponent<SpriteRenderer>();
-        sp1.sprite = skins[0].head;
-        sp2.sprite = skins[0].Body;
-        sp3.sprite = skins[0].Legs;
-        sp4.sprite = skins[0].Arm;
-        sp5.sprite = skins[0].Arm;
+        sp1.sprite = skins[skin].head;
+        sp2.sprite = skins[skin].Body;
+        sp3.sprite = skins[skin].Legs;
+        sp4.sprite = skins[skin].Arm;
+        sp5.sprite = skins[skin].Arm;
     }
 }
