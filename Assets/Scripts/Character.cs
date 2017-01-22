@@ -67,7 +67,7 @@ public class Character : MonoBehaviour
         leftArmPivot.transform.rotation = Quaternion.Euler(0, 0, Random.value * 360);
         rightArmPivot.transform.rotation = Quaternion.Euler(0, 0, Random.value * 360);
         colorRenderer.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
-        colorRenderer.enabled = false;
+        colorRenderer.enabled = hasPlayer;
     }
 
     [ContextMenu("SetArmLength")]
