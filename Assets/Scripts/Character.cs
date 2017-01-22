@@ -29,10 +29,12 @@ public class Character : MonoBehaviour
     [SerializeField]
     private bool jumpOnBeat = true;
 
+    [SerializeField]
+    public Renderer colorRenderer;
+
     new private Rigidbody2D rigidbody;
     private Rigidbody2D leftArmRigidbody;
     private Rigidbody2D rightArmRigidbody;
-    new private Renderer renderer;
 
     private Color characterColor;
     public Color CharacterColor
@@ -41,7 +43,11 @@ public class Character : MonoBehaviour
         get { return characterColor; }
         set {
             characterColor = value;
-            renderer.material.color = value;
+            const float a = 0.5f;
+            Color indicatorColor = characterColor;
+            indicatorColor.a = a;
+            const string propName = "_TintColor";
+            colorRenderer.material.SetColor(propName, indicatorColor);
         }
     }
 
@@ -55,12 +61,13 @@ public class Character : MonoBehaviour
         rigidbody = GetComponent<Rigidbody2D>();
         leftArmRigidbody = leftArmPivot.GetComponent<Rigidbody2D>();
         rightArmRigidbody = rightArmPivot.GetComponent<Rigidbody2D>();
-        renderer = GetComponentsInChildren<Renderer>()[0];
     }
 
     void Start() {
         leftArmPivot.transform.rotation = Quaternion.Euler(0, 0, Random.value * 360);
         rightArmPivot.transform.rotation = Quaternion.Euler(0, 0, Random.value * 360);
+        colorRenderer.transform.rotation = Quaternion.Euler(0, 0, Random.Range(-10f, 10f));
+        colorRenderer.enabled = false;
     }
 
     [ContextMenu("SetArmLength")]

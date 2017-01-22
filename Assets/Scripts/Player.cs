@@ -78,6 +78,7 @@ public class Player : MonoBehaviour {
         c.hasPlayer = true;
         c.CharacterColor = color;
         currentCharacter = c;
+        c.colorRenderer.enabled = true;
     }
 
     /// <summary>
@@ -87,6 +88,7 @@ public class Player : MonoBehaviour {
         if(currentCharacter != null) {
             currentCharacter.hasPlayer = false;
             currentCharacter.ResetColor();
+            currentCharacter.colorRenderer.enabled = false;
         }
         currentCharacter = null;
     }
