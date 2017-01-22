@@ -21,8 +21,8 @@ public class TitleScreen : MonoBehaviour {
 
     private void FindOrCreatePlayers() {
         // Only create new players if they didn't already exist.
-        Character[] characters = Object.FindObjectsOfType<Character>();
-        Player[] players = Object.FindObjectsOfType<Player>();
+        characters = Object.FindObjectsOfType<Character>();
+        players = Object.FindObjectsOfType<Player>();
         if (players.Length == 0) {
             players = new Player[4];
             GameObject obj = new GameObject("Players");
@@ -62,6 +62,7 @@ public class TitleScreen : MonoBehaviour {
                 Character character = System.Array.Find(characters, c => { return !c.hasPlayer; });
                 p.Attach(character);
                 p.Active = true;
+                Debug.Log("Assigned player " + p.playerNumber);
             }
         }
     }
