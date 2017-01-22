@@ -29,10 +29,10 @@ public class Player : MonoBehaviour {
     {
         this.playerNumber = playerNumber;
 
-        leftAxisX = string.Format("Joystick{0}AnalogLeftX", playerNumber);
-        leftAxisY = string.Format("Joystick{0}AnalogLeftY", playerNumber);
-        rightAxisX = string.Format("Joystick{0}AnalogRightX", playerNumber);
-        rightAxisY = string.Format("Joystick{0}AnalogRightY", playerNumber);
+        leftAxisX = string.Format("Joystick{0}LeftX", playerNumber);
+        leftAxisY = string.Format("Joystick{0}LeftY", playerNumber);
+        rightAxisX = string.Format("Joystick{0}RightX", playerNumber);
+        rightAxisY = string.Format("Joystick{0}RightY", playerNumber);
         //string jumpButton = string.Format("Jump{0}", playerNumber);
         jumpButton = "Jump";
         //string switchButton = string.Format("Switch{0}", playerNumber);

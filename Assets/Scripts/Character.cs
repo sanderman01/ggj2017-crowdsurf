@@ -63,7 +63,6 @@ public class Character : MonoBehaviour
     {
         if (transform.position.y < 0)
         {
-            Debug.Log("landed");
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
 
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
