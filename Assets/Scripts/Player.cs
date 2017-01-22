@@ -4,8 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public bool Active { get { return active; } }
+    public bool Active {
+        get { return active; }
+        set { active = value; }
+    }
     private bool active = true;
+    public bool Idle { get { return idle; } }
+    private bool idle; // TODO Detect Activity or Idling by checking current controller axis and button states
     public int playerNumber;
     public Color color;
     public Character currentCharacter;
@@ -22,12 +27,12 @@ public class Player : MonoBehaviour {
     void Start()
     {
         SetPlayerNumber(playerNumber);
-        controls.SetJoystickID(playerNumber);
     }
 
     public void SetPlayerNumber(int playerNumber)
     {
         this.playerNumber = playerNumber;
+        controls.SetJoystickID(playerNumber);
 
         leftAxisX = string.Format("Joystick{0}LeftX", playerNumber);
         leftAxisY = string.Format("Joystick{0}LeftY", playerNumber);
@@ -71,6 +76,7 @@ public class Player : MonoBehaviour {
             Detach();
         }
         c.hasPlayer = true;
+        c.CharacterColor = color;
         currentCharacter = c;
     }
 
@@ -78,7 +84,10 @@ public class Player : MonoBehaviour {
     /// Detach this player from a character.
     /// </summary>
     public void Detach() {
-        currentCharacter.hasPlayer = false;
+        if(currentCharacter != null) {
+            currentCharacter.hasPlayer = false;
+            currentCharacter.ResetColor();
+        }
         currentCharacter = null;
     }
 }
