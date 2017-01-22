@@ -26,6 +26,14 @@ public class Character : MonoBehaviour
 
     const float axisMargin = 0.5f;
 
+    [SerializeField]
+    private bool jumpOnBeat = true;
+
+    new private Rigidbody2D rigidbody;
+    private Rigidbody2D leftArmRigidbody;
+    private Rigidbody2D rightArmRigidbody;
+    new private Renderer renderer;
+
     private Color characterColor;
     public Color CharacterColor
     {
@@ -33,8 +41,7 @@ public class Character : MonoBehaviour
         get { return characterColor; }
         set {
             characterColor = value;
-            Renderer render = GetComponentsInChildren<Renderer>()[0];
-            render.material.color = value;
+            renderer.material.color = value;
         }
     }
 
@@ -44,8 +51,16 @@ public class Character : MonoBehaviour
         CharacterColor = Color.white;
     }
 
-    void Update() 
-    {
+    void Awake() {
+        rigidbody = GetComponent<Rigidbody2D>();
+        leftArmRigidbody = leftArmPivot.GetComponent<Rigidbody2D>();
+        rightArmRigidbody = rightArmPivot.GetComponent<Rigidbody2D>();
+        renderer = GetComponentsInChildren<Renderer>()[0];
+    }
+
+    void Start() {
+        leftArmPivot.transform.rotation = Quaternion.Euler(0, 0, Random.value * 360);
+        rightArmPivot.transform.rotation = Quaternion.Euler(0, 0, Random.value * 360);
     }
 
     [ContextMenu("SetArmLength")]
@@ -62,23 +77,23 @@ public class Character : MonoBehaviour
         leftArm.localPosition = rightArm.localPosition = armPosition;
     }
 
-    void FixedUpdate()
-    {
-        Rigidbody2D rigidbody = GetComponent<Rigidbody2D>();
-
-        // Jumping on the beat
-        Vector3 p = rigidbody.position;
-        p.y += Mathf.Sin((Time.fixedTime + p.x * 0.7f) * Mathf.PI * 4) * 0.01f;
-        p.y += Mathf.Sin((Time.fixedTime + p.x * 0.15f) * Mathf.PI * 4) * 0.03f;
-        rigidbody.position = p;
-
+    void Update() {
         // Land on the floor
-        if (transform.position.y < floorY)
-        {
-            Debug.Log("landed");
+        if (transform.position.y < floorY) {
             transform.position = new Vector3(transform.position.x, floorY, transform.position.z);
             rigidbody.velocity = Vector2.zero;
             grounded = true;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        // Jumping on the beat
+        if (jumpOnBeat) {
+            Vector3 p = rigidbody.position;
+            p.y += Mathf.Sin((Time.fixedTime + p.x * 0.7f) * Mathf.PI * 4) * 0.01f;
+            p.y += Mathf.Sin((Time.fixedTime + p.x * 0.15f) * Mathf.PI * 4) * 0.03f;
+            rigidbody.MovePosition(p);
         }
     }
 
@@ -90,9 +105,7 @@ public class Character : MonoBehaviour
             Quaternion currentRotation = transform.rotation;
             Quaternion targetRotation = Quaternion.FromToRotation(Vector2.right, rightArmInput);
             float rotationMovementAngle = targetRotation.eulerAngles.z - currentRotation.eulerAngles.z;
-            rightArmPivot.GetComponent<Rigidbody2D>().MoveRotation(rotationMovementAngle);
-
-            //rightArmPivot.transform.rotation = targetRotation;
+            rightArmRigidbody.MoveRotation(rotationMovementAngle);
         }
     }
 
@@ -101,8 +114,10 @@ public class Character : MonoBehaviour
         if (leftArmInput.magnitude > axisMargin)
         {
             leftArmInput = leftArmInput.normalized;
+            Quaternion currentRotation = transform.rotation;
             Quaternion targetRotation = Quaternion.FromToRotation(Vector2.right, leftArmInput);
-            leftArmPivot.transform.rotation = targetRotation;
+            float rotationMovementAngle = targetRotation.eulerAngles.z - currentRotation.eulerAngles.z;
+            leftArmRigidbody.MoveRotation(rotationMovementAngle);
         }
     }
 
@@ -117,8 +132,8 @@ public class Character : MonoBehaviour
 
     private IEnumerator jumpRoutine()
     {
-        GetComponent<Rigidbody2D>().velocity = jumpVelocity;
+        rigidbody.velocity = jumpVelocity;
         yield return new WaitForSeconds(jumpDuration);
-        GetComponent<Rigidbody2D>().velocity = -jumpVelocity;
+        rigidbody.velocity = -jumpVelocity;
     }
 }
