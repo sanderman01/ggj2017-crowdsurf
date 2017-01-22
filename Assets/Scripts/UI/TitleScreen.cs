@@ -75,7 +75,10 @@ public class TitleScreen : MonoBehaviour {
                 Character character = System.Array.Find(characters, c => { return !c.hasPlayer; });
                 p.Attach(character);
                 p.Active = true;
-                Debug.Log("Assigned player " + p.playerNumber);
+            }
+            if(p.Active && p.currentCharacter == null) {
+                Character character = System.Array.Find(characters, c => { return !c.hasPlayer; });
+                p.Attach(character);
             }
         }
     }

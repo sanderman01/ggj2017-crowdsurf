@@ -102,10 +102,10 @@ public class Player : MonoBehaviour {
         if (currentCharacter != null) {
             Detach();
         }
-        c.hasPlayer = true;
-        c.CharacterColor = color;
         currentCharacter = c;
-        c.colorRenderer.enabled = true;
+        currentCharacter.hasPlayer = true;
+        currentCharacter.CharacterColor = color;
+        currentCharacter.colorRenderer.enabled = true;
     }
 
     /// <summary>

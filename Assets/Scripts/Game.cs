@@ -72,6 +72,10 @@ public class Game : MonoBehaviour {
                 SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
                 switching.SwitchForward(p);
             }
+            if (p.Active && p.currentCharacter == null) {
+                SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
+                switching.SwitchForward(p);
+            }
         }
     }
 
