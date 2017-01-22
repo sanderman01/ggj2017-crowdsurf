@@ -58,7 +58,7 @@ public class Surfer : MonoBehaviour {
 
     void Update() {
         CalcMinMaxAverage();
-        Stats.currentGame.game_distance = AveragePosition.x;
+        Stats.currentGame.game_distance = Mathf.Max(Stats.currentGame.game_distance, AveragePosition.x);
         Stats.currentGame.jumps_highest = Mathf.Max(Stats.currentGame.jumps_highest, MaxHeight);
 
     }
