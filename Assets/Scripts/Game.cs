@@ -25,6 +25,9 @@ public class Game : MonoBehaviour {
     /// </summary>
     private const string nextScene = "TitleScene";
 
+    [SerializeField]
+    private Color[] playerColors;
+
     private Player[] players;
 
 	void Start () {
@@ -35,6 +38,18 @@ public class Game : MonoBehaviour {
     private void FindOrCreatePlayers() {
         // Only create new players if they didn't already exist.
         players = Object.FindObjectsOfType<Player>();
+        if (players.Length == 0) {
+            players = new Player[4];
+            GameObject obj = new GameObject("Players");
+            DontDestroyOnLoad(obj);
+            for (int i = 0; i < 4; ++i) {
+                Player player = obj.AddComponent<Player>();
+                player.SetPlayerNumber(i + 1);
+                player.color = playerColors[i];
+                player.Active = false;
+                players[i] = player;
+            }
+        }
     }
 
     void Update() {
