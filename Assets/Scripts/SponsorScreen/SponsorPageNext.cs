@@ -26,7 +26,7 @@ public class SponsorPageNext : MonoBehaviour {
         {
             sponsorImage[currentLogo].CrossFadeAlpha(0, 1f, false);
             currentLogo++;
-            StartCoroutine(NextPage(7.2f));
+            StartCoroutine(NextPage(3.6f));
         }
         else
         {
