@@ -8,7 +8,7 @@ public class Game : MonoBehaviour {
     /// <summary>
     /// Number of seconds to show the Stats/Scores screen after ending the game, before switching to the next scene.
     /// </summary>
-    private const float GameEndDelayLong = 15f;
+    private const float GameEndDelayLong = 2f;
 
     /// <summary>
     /// Number of seconds to show the Stats/Scores screen after stopping the game, before switching to the next scene.
@@ -23,7 +23,7 @@ public class Game : MonoBehaviour {
     /// <summary>
     /// Next scene to load after showing the score window.
     /// </summary>
-    private const string nextScene = "titleScreen";
+    private const string nextScene = "TitleScene";
 
     private Player[] players;
 
@@ -145,6 +145,7 @@ public class Game : MonoBehaviour {
     /// Ragdoll hit the floor so the game was lost.
     /// </summary>
     public void LoseGame() {
+        Debug.Log("Lose game..");
         EndGameRound(GameEndDelayLong, Stats.GameEndedReason.Failed);
     }
 
@@ -152,6 +153,7 @@ public class Game : MonoBehaviour {
     /// Abort the current game and quickly go back to title.
     /// </summary>
     public void EndGameRound(float gameEndDelay, Stats.GameEndedReason reason) {
+        Debug.Log("Ending round..");
         // Disable further updates on the surfer ragdoll.
         Surfer surfer = GameObject.FindObjectOfType<Surfer>();
         surfer.enabled = false;
