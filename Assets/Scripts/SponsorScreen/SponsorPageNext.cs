@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SponsorPageNext : MonoBehaviour {
 
@@ -29,7 +30,7 @@ public class SponsorPageNext : MonoBehaviour {
         }
         else
         {
-            Debug.Log("GOTO Next Scene");
+            SceneManager.LoadScene("TitleScene");
         }
     }
 }
