@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,12 +41,23 @@ public class TitleScreen : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         CheckPlayerActivity();
-
-        // TODO Transition to game scene.
-        //if(All4PlayersActive || (TimerEnded && nPlayers > 1) ) {
-        //    GoToGameScene();
-        //}
+        bool playersReady = CheckPlayersReady();
+        if (playersReady)
+            GoToGameScene();
 	}
+
+    private bool CheckPlayersReady() {
+        int nActivePlayers = 0;
+        bool allReady = true;
+        foreach(Player p in players) {
+            if(p.Active) {
+                nActivePlayers += 1;
+                allReady = allReady && p.Ready;
+            }
+        }
+
+        return nActivePlayers > 1 && allReady;
+    }
 
 
 
