@@ -105,7 +105,6 @@ public class Surfer : MonoBehaviour {
         if(currentCollisionCount == 0) {
             // We are no longer colliding with anything. this means we just started a jump.
             Stats.currentGame.jumps_total += 1;
-            Debug.Log("jump " + Stats.currentGame.jumps_total);
         }
     }
 }
