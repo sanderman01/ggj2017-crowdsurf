@@ -27,6 +27,7 @@ public class Player : MonoBehaviour {
     void Start()
     {
         SetPlayerNumber(playerNumber);
+        idle = true;
     }
 
     public void SetPlayerNumber(int playerNumber)
@@ -46,7 +47,12 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(currentCharacter != null) {
+        if (idle)
+        {
+            checkIdle();
+        }
+
+        if (currentCharacter != null) {
             Vector2 leftStick = new Vector2(Input.GetAxis(leftAxisX), Input.GetAxis(leftAxisY));
             Vector2 rightStick = new Vector2(Input.GetAxis(rightAxisX), Input.GetAxis(rightAxisY));
 
@@ -66,6 +72,27 @@ public class Player : MonoBehaviour {
                 switching.SwitchBack(this);
             }
         }
+    }
+
+    private bool checkIdle()
+    {
+        if( controls.ADown() ||
+            controls.BDown() ||
+            controls.XDown() ||
+            controls.YDown() ||
+            controls.LBDown() ||
+            controls.RBDown() ||
+            controls.SelectDown() ||
+            controls.StartDown() ||
+            controls.LeftAnalogDown() ||
+            controls.RightAnalogDown())
+        {
+            Debug.Log("button pressed" + playerNumber );
+            idle = false;
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>

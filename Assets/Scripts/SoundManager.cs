@@ -19,7 +19,7 @@ public class SoundManager : MonoBehaviour {
         audiosource.clip = intro;
         audiosource.loop = false;
         audiosource.Play();
-        yield return new WaitForSeconds(intro.length + introClipOffset); //1.5f is the real length in seconds of the intro
+        yield return new WaitForSeconds(intro.length + introClipOffset); 
         audiosource.Stop();
         audiosource.clip = music;
         audiosource.loop = true;
