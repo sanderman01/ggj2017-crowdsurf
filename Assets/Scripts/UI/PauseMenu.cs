@@ -13,41 +13,49 @@ public class PauseMenu : MonoBehaviour
     private int selectedButtonInt;
     public Texture[] imagesNormal;
     public Texture[] imagesSelected;
-    public Texture[] currentTexture;
+    private Texture[] currentTexture = new Texture[3];
 
     void Start()
     {
         normalButton = _GUISkin.FindStyle("Normal");
         buttonGUI = new GUIStyle[3];
-        SetGUISKins(0);
+        SetGUISkins(0);
         this.gameObject.SetActive(false);
         currentTexture = new Texture[imagesNormal.Length];
-        currentTexture = imagesNormal;
+        for (int i = 0; i < currentTexture.Length; i++)
+        {
+            currentTexture[i] = imagesNormal[i];
+        }
     }
 
     public void NextOption()
     {
-        SetGUISKins(selectedButtonInt + 1);
+        SetGUISkins(selectedButtonInt + 1);
     }
 
     public void OnEnable()
     {
-        SetGUISKins(0);
+        SetGUISkins(0);
+    }
+
+    public void OnDisable()
+    {
+        Time.timeScale = 1.0f;
     }
 
     public void PreviousOption()
     {
         if (selectedButtonInt == 0)
         {
-            SetGUISKins(buttonGUI.Length - 1);
+            SetGUISkins(buttonGUI.Length - 1);
         }
         else
         {
-            SetGUISKins(selectedButtonInt - 1);
+            SetGUISkins(selectedButtonInt - 1);
         }
     }
 
-    public void SetGUISKins(int selected)
+    public void SetGUISkins(int selected)
     {
         if (buttonGUI != null)
         {
