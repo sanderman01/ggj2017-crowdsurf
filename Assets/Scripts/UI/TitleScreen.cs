@@ -12,6 +12,7 @@ public class TitleScreen : MonoBehaviour {
 
     [SerializeField]
     private Color[] playerColors;
+    public int MinActivePlayers = 2;
 
     private Player[] players;
     private Character[] characters;
@@ -23,8 +24,8 @@ public class TitleScreen : MonoBehaviour {
 
     private void FindOrCreatePlayers() {
         // Only create new players if they didn't already exist.
-        characters = Object.FindObjectsOfType<Character>();
-        players = Object.FindObjectsOfType<Player>();
+        characters = FindObjectsOfType<Character>();
+        players = FindObjectsOfType<Player>();
         if (players.Length == 0) {
             players = new Player[4];
             GameObject obj = new GameObject("Players");
@@ -57,7 +58,7 @@ public class TitleScreen : MonoBehaviour {
             }
         }
 
-        return nActivePlayers > 1 && allReady;
+        return nActivePlayers >= MinActivePlayers && allReady;
     }
 
 
