@@ -43,7 +43,7 @@ public class Character : MonoBehaviour
         get { return characterColor; }
         set {
             characterColor = value;
-            const float a = 0.5f;
+            const float a = 0.25f;
             Color indicatorColor = characterColor;
             indicatorColor.a = a;
             const string propName = "_TintColor";
