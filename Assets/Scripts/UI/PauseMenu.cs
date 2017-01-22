@@ -64,15 +64,15 @@ public class PauseMenu : MonoBehaviour
     {
         if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 2 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Resume", buttonGUI[0]))
         {
-            GameObject.Find("PauseManager").GetComponent<PauseManager>().Pause();
+            
         }
         if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 3 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Restart", buttonGUI[1]))
         {
-            Restart();
+            
         }
         if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 4 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Quit", buttonGUI[2]))
         {
-            Application.Quit();
+            
         }
     }
 
@@ -81,7 +81,7 @@ public class PauseMenu : MonoBehaviour
         switch (selectedButtonInt)
         {
             case 0:
-                GameObject.Find("PauseManager").GetComponent<PauseManager>().Pause();
+                GameObject.Find("Game").GetComponent<PauseManager>().Pause();
                 this.gameObject.SetActive(false);
                 break;
             case 1:

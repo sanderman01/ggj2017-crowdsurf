@@ -44,20 +44,13 @@ public class PauseManager : MonoBehaviour {
             {
                 cooldown[i] = false;
             }
-            if (controls[i].ADown())
+            if (controls[i].ADown() && Time.timeScale == 0.0f)
             {
                 pauseUI.gameObject.GetComponent<PauseMenu>().Select();
             }
             if (controls[i].StartDown())
             {
-                if (pauseUI.activeSelf)
-                {
-                    pauseUI.SetActive(false);
-                }
-                else
-                {
-                    pauseUI.SetActive(true);
-                }
+                Pause();
             }
         }
     }
