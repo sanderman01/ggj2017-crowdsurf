@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,6 +7,8 @@ using UnityEngine;
 /// This is where players will be able to hit their button and determine which color they own and how the basic controls work.
 /// </summary>
 public class TitleScreen : MonoBehaviour {
+
+    const string gameScene = "PrototypeSceneMerge";
 
     [SerializeField]
     private Color[] playerColors;
@@ -80,7 +81,9 @@ public class TitleScreen : MonoBehaviour {
     }
 
     private void GoToGameScene() {
-        // TODO GoToGameScene
-        throw new System.NotImplementedException();
+        foreach(Player p in players) {
+            p.Detach();
+        }
+        UnityEngine.SceneManagement.SceneManager.LoadScene(gameScene);
     }
 }
