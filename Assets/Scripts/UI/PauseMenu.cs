@@ -20,12 +20,13 @@ public class PauseMenu : MonoBehaviour
         normalButton = _GUISkin.FindStyle("Normal");
         buttonGUI = new GUIStyle[3];
         SetGUISkins(0);
-        this.gameObject.SetActive(false);
+
         currentTexture = new Texture[imagesNormal.Length];
         for (int i = 0; i < currentTexture.Length; i++)
         {
             currentTexture[i] = imagesNormal[i];
         }
+        this.gameObject.SetActive(false);
     }
 
     public void NextOption()
