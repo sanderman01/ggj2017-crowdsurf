@@ -41,26 +41,25 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        Vector2 leftStick = new Vector2(Input.GetAxis(leftAxisX), Input.GetAxis(leftAxisY));
-        Vector2 rightStick = new Vector2(Input.GetAxis(rightAxisX), Input.GetAxis(rightAxisY));
-        
-        currentCharacter.moveLeftArm(leftStick);
-        currentCharacter.moveRightArm(rightStick);
+        if(currentCharacter != null) {
+            Vector2 leftStick = new Vector2(Input.GetAxis(leftAxisX), Input.GetAxis(leftAxisY));
+            Vector2 rightStick = new Vector2(Input.GetAxis(rightAxisX), Input.GetAxis(rightAxisY));
 
-        if (controls.ADown() || Mathf.Abs(controls.GetTrigger()) > 0.5f)
-        {
-            currentCharacter.jump();
-        }
+            currentCharacter.moveLeftArm(leftStick);
+            currentCharacter.moveRightArm(rightStick);
 
-        if (controls.RBDown())
-        {
-            SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
-            switching.Switch(this);
-        }
-        if (controls.LBDown())
-        {
-            SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
-            switching.SwitchBack(this);
+            if (controls.ADown() || Mathf.Abs(controls.GetTrigger()) > 0.5f) {
+                currentCharacter.jump();
+            }
+
+            if (controls.RBDown()) {
+                SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
+                switching.Switch(this);
+            }
+            if (controls.LBDown()) {
+                SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
+                switching.SwitchBack(this);
+            }
         }
     }
 
