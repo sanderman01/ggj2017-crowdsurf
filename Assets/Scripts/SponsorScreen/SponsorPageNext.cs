@@ -11,7 +11,7 @@ public class SponsorPageNext : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        StartCoroutine(NextPage(2.0f));
+        StartCoroutine(NextPage(3.0f));
 	}
 	
 	// Update is called once per frame
@@ -26,7 +26,7 @@ public class SponsorPageNext : MonoBehaviour {
         {
             sponsorImage[currentLogo].CrossFadeAlpha(0, 1f, false);
             currentLogo++;
-            StartCoroutine(NextPage(6));
+            StartCoroutine(NextPage(3.6f));
         }
         else
         {
