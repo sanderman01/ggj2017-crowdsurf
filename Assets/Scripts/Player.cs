@@ -26,6 +26,7 @@ public class Player : MonoBehaviour {
     string jumpButton;
     string switchButton;
     Controls controls = new Controls();
+    AudioSource audioSource;
 
     void Start()
     {
@@ -101,6 +102,16 @@ public class Player : MonoBehaviour {
         Debug.Log("Assigned player: " + playerNumber);
         if (currentCharacter != null) {
             Detach();
+        } else
+        {
+            if (audioSource == null)
+            {
+                audioSource = gameObject.AddComponent<AudioSource>();
+                int clipID = UnityEngine.Random.Range(1, 4);
+                audioSource.clip = Resources.Load("menuSelect" + clipID) as AudioClip;
+                audioSource.loop = false;
+                audioSource.Play();
+            }
         }
         currentCharacter = c;
         currentCharacter.hasPlayer = true;
