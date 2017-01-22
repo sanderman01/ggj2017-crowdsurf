@@ -25,11 +25,39 @@ public class Game : MonoBehaviour {
     /// </summary>
     private const string nextScene = "titleScreen";
 
+    private Player[] players;
+
 	void Start () {
+        FindOrCreatePlayers();
         StartGameRound();
     }
 
+    private void FindOrCreatePlayers() {
+        // Only create new players if they didn't already exist.
+        players = Object.FindObjectsOfType<Player>();
+    }
+
     void Update() {
+        CheckPlayerActivity();
+    }
+
+
+
+    /// <summary>
+    /// Detect human players to activate and assign them a color and temporary character.
+    /// </summary>
+    void CheckPlayerActivity() {
+        foreach (Player p in players) {
+            if (!p.Active && !p.Idle) {
+                // This player was not yet activated, but is now showing activity.
+                // Activate and assign it to a character, so the player can identify his own color and the basic game mechanics.
+
+                // Find the first available character and attach it.
+                p.Active = true;
+                SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
+                switching.SwitchForward(p);
+            }
+        }
     }
 
     private bool paused = false;

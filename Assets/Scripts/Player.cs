@@ -65,18 +65,21 @@ public class Player : MonoBehaviour {
 
             if (controls.RBDown()) {
                 SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
-                switching.SwitchForward(this);
+                if(switching != null)
+                    switching.SwitchForward(this);
             }
             if (controls.LBDown()) {
                 SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
-                switching.SwitchBackward(this);
+                if(switching != null)
+                    switching.SwitchBackward(this);
             }
         }
     }
 
-    private bool checkIdle()
+    private void checkIdle()
     {
-        if( controls.ADown() ||
+        idle =
+         !(controls.ADown() ||
             controls.BDown() ||
             controls.XDown() ||
             controls.YDown() ||
@@ -85,17 +88,7 @@ public class Player : MonoBehaviour {
             controls.SelectDown() ||
             controls.StartDown() ||
             controls.LeftAnalogDown() ||
-            controls.RightAnalogDown())
-        {
-            Debug.Log("button pressed" + playerNumber );
-            SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
-            switching.SwitchForward(this);
-            idle = false;
-            
-            return true;
-        }
-
-        return false;
+            controls.RightAnalogDown());
     }
 
     /// <summary>
