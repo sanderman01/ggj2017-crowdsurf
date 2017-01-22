@@ -8,7 +8,7 @@ public class Game : MonoBehaviour {
     /// <summary>
     /// Number of seconds to show the Stats/Scores screen after ending the game, before switching to the next scene.
     /// </summary>
-    private const float GameEndDelayLong = 2f;
+    private const float GameEndDelayLong = 1f;
 
     /// <summary>
     /// Number of seconds to show the Stats/Scores screen after stopping the game, before switching to the next scene.
@@ -27,10 +27,12 @@ public class Game : MonoBehaviour {
 
     [SerializeField]
     private Color[] playerColors;
+    AudioSource audiosource;
 
     private Player[] players;
 
 	void Start () {
+        audiosource = GetComponent<AudioSource>();
         FindOrCreatePlayers();
         StartGameRound();
     }
@@ -165,6 +167,12 @@ public class Game : MonoBehaviour {
     /// </summary>
     public void LoseGame() {
         Debug.Log("Lose game..");
+        audiosource.PlayOneShot(audiosource.clip);
+        StartCoroutine(WaitUnTilEndOfSoundToEndTheGame(audiosource.clip.length));   
+    }
+    public IEnumerator WaitUnTilEndOfSoundToEndTheGame(float waitTime)
+    {
+        yield return new WaitForSecondsRealtime(waitTime);
         EndGameRound(GameEndDelayLong, Stats.GameEndedReason.Failed);
     }
 
