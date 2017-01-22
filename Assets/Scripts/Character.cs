@@ -89,7 +89,7 @@ public class Character : MonoBehaviour
     void FixedUpdate()
     {
         // Jumping on the beat
-        if (jumpOnBeat) {
+        if (jumpOnBeat && hasPlayer==false) {
             Vector3 p = rigidbody.position;
             p.y += Mathf.Sin((Time.fixedTime + p.x * 0.7f) * Mathf.PI * 4) * 0.01f;
             p.y += Mathf.Sin((Time.fixedTime + p.x * 0.15f) * Mathf.PI * 4) * 0.03f;
