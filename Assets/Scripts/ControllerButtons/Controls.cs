@@ -38,6 +38,20 @@ public class Controls {
         return Input.GetAxis("Joystick" + (joystickID) + "Trigger");
     }
 
+    public bool AnyKey()
+    {
+        //Debug.Log(""+ Input.GetJoystickNames()[0]);
+        for (int i = 0; i < 9; i++)
+        {
+            if (Input.GetKey("joystick button " + i))
+            {
+                Debug.Log("PRESSSED: joystick " + joystickID + " button " + i);
+                return true;
+            }
+        }
+        return false;
+    }
+
     public bool ADown()
     {
         switch (joystickID)
