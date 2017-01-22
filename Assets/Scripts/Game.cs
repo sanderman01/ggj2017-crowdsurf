@@ -77,7 +77,7 @@ public class Game : MonoBehaviour {
         Player[] players = GameObject.FindObjectsOfType<Player>();
         foreach (Player p in players) {
             if (p.Active) {
-                switching.Switch(p);
+                switching.SwitchForward(p);
             }
         }
 

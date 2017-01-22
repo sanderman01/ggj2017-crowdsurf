@@ -8,7 +8,7 @@ public class Player : MonoBehaviour {
         get { return active; }
         set { active = value; }
     }
-    private bool active = true;
+    private bool active = false;
     public bool Idle { get { return idle; } }
     private bool idle; // TODO Detect Activity or Idling by checking current controller axis and button states
     public int playerNumber;
@@ -65,11 +65,11 @@ public class Player : MonoBehaviour {
 
             if (controls.RBDown()) {
                 SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
-                switching.Switch(this);
+                switching.SwitchForward(this);
             }
             if (controls.LBDown()) {
                 SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
-                switching.SwitchBack(this);
+                switching.SwitchBackward(this);
             }
         }
     }
@@ -88,7 +88,10 @@ public class Player : MonoBehaviour {
             controls.RightAnalogDown())
         {
             Debug.Log("button pressed" + playerNumber );
+            SwitchingCharacter switching = FindObjectOfType<SwitchingCharacter>();
+            switching.SwitchForward(this);
             idle = false;
+            
             return true;
         }
 
@@ -99,6 +102,7 @@ public class Player : MonoBehaviour {
     /// Attach this player to a character.
     /// </summary>
     public void Attach(Character c) {
+        Debug.Log("Assigned player: " + playerNumber);
         if (currentCharacter != null) {
             Detach();
         }
