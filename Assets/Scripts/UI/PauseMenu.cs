@@ -45,19 +45,23 @@ public class PauseMenu : MonoBehaviour
 
     public void SetGUISKins(int selected)
     {
-        selected = selected % buttonGUI.Length;
-        for (int i = 0; i < buttonGUI.Length; i++)
+        if(buttonGUI != null)
         {
-            if (i == selected)
+            selected = selected % buttonGUI.Length;
+            for (int i = 0; i < buttonGUI.Length; i++)
             {
-                buttonGUI[i] = _GUISkins.FindStyle("Selected");
+                if (i == selected)
+                {
+                    buttonGUI[i] = _GUISkins.FindStyle("Selected");
+                }
+                else
+                {
+                    buttonGUI[i] = _GUISkins.FindStyle("Normal");
+                }
             }
-            else
-            {
-                buttonGUI[i] = _GUISkins.FindStyle("Normal");
-            }
+            selectedButtonInt = selected;
         }
-        selectedButtonInt = selected;
+        
     }
 
     void OnGUI()
