@@ -38,6 +38,11 @@ public class PauseMenu : MonoBehaviour
         SetGUISkins(0);
     }
 
+    public void OnDisable()
+    {
+        Time.timeScale = 1.0f;
+    }
+
     public void PreviousOption()
     {
         if (selectedButtonInt == 0)
