@@ -18,6 +18,7 @@ public class PauseManager : MonoBehaviour {
             controls[i].SetJoystickID(i+1);
             cooldown[i] = false;
         }
+        Pause();
     }
 
     void Update()

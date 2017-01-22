@@ -9,16 +9,20 @@ public class PauseMenu : MonoBehaviour
     private GUIStyle normalButton;
     private GUIStyle selectedButton;
     private GUIStyle[] buttonGUI;
-    public GUISkin _GUISkins;
+    public GUISkin _GUISkin;
     private int selectedButtonInt;
+    public Texture[] imagesNormal;
+    public Texture[] imagesSelected;
+    public Texture[] currentTexture;
 
     void Start()
     {
-        normalButton = _GUISkins.FindStyle("Normal");
-        selectedButton = _GUISkins.FindStyle("Selected");
+        normalButton = _GUISkin.FindStyle("Normal");
         buttonGUI = new GUIStyle[3];
         SetGUISKins(0);
         this.gameObject.SetActive(false);
+        currentTexture = new Texture[imagesNormal.Length];
+        currentTexture = imagesNormal;
     }
 
     public void NextOption()
@@ -45,38 +49,38 @@ public class PauseMenu : MonoBehaviour
 
     public void SetGUISKins(int selected)
     {
-        if(buttonGUI != null)
+        if (buttonGUI != null)
         {
             selected = selected % buttonGUI.Length;
             for (int i = 0; i < buttonGUI.Length; i++)
             {
                 if (i == selected)
                 {
-                    buttonGUI[i] = _GUISkins.FindStyle("Selected");
+                    currentTexture[i] = imagesSelected[i];
                 }
                 else
                 {
-                    buttonGUI[i] = _GUISkins.FindStyle("Normal");
+                    currentTexture[i] = imagesNormal[i];
                 }
             }
             selectedButtonInt = selected;
         }
-        
     }
 
     void OnGUI()
     {
-        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 2 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Resume", buttonGUI[0]))
+        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 2 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), currentTexture[0], normalButton))
         {
-            
+
         }
-        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 3 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Restart", buttonGUI[1]))
+
+        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 3 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), currentTexture[1], normalButton))
         {
-            
+
         }
-        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 4 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), "Quit", buttonGUI[2]))
+        if (GUI.Button(new Rect(Screen.width / 2 - Screen.width / 8 * 3, Screen.height / 5 * 4 - Screen.height / 6, Screen.width / 8 * 6, Screen.height / 6), currentTexture[2], normalButton))
         {
-            
+
         }
     }
 
