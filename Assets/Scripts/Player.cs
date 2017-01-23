@@ -80,6 +80,7 @@ public class Player : MonoBehaviour {
 
     private void checkIdle()
     {
+        const float axisMargin = 0.5f;
         idle =
          !(controls.ADown() ||
             controls.BDown() ||
@@ -90,7 +91,12 @@ public class Player : MonoBehaviour {
             controls.SelectDown() ||
             controls.StartDown() ||
             controls.LeftAnalogDown() ||
-            controls.RightAnalogDown());
+            controls.RightAnalogDown() ||
+            (Mathf.Abs(controls.GetLeftAxisX()) > axisMargin) ||
+            (Mathf.Abs(controls.GetRightAxisY()) > axisMargin) ||
+            (Mathf.Abs(controls.GetLeftAxisX()) > axisMargin) ||
+            (Mathf.Abs(controls.GetRightAxisY()) > axisMargin) ||
+            (Mathf.Abs(controls.GetTrigger()) > axisMargin) );
     }
 
     /// <summary>
