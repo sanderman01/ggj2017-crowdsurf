@@ -9,7 +9,7 @@ public class PlayerManager : MonoBehaviour {
         get {
             if (instance == null) {
                 instance = new GameObject("PlayerManager").AddComponent<PlayerManager>();
-                instance.Init();
+                //instance.Init();
             }
             return instance;
         }
@@ -32,8 +32,10 @@ public class PlayerManager : MonoBehaviour {
     public static IEnumerable<Player> Players { get { return Instance.players; } }
 
     void Awake() {
-        instance = this;
-        instance.Init();
+        if(instance == null) {
+            instance = this;
+            instance.Init();
+        }
     }
 
     void OnDestroy() {
