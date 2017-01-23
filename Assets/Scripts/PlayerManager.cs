@@ -52,9 +52,12 @@ public class PlayerManager : MonoBehaviour {
         players = new Player[4];
         for (int i = 0; i < 4; ++i) {
             Player player = gameObject.AddComponent<Player>();
-            player.SetPlayerNumber(i + 1);
-            player.color = playerColors[i];
             player.Active = false;
+
+            int playerNumber = i + 1;
+            Color playerColor = playerColors[i];
+            player.Init(playerNumber, playerColor);
+
             players[i] = player;
         }
     }

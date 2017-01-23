@@ -4,27 +4,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+
+    private bool active = false;
     public bool Active {
         get { return active; }
         set { active = value; }
     }
-    private bool active = false;
+
+    private bool idle;
     public bool Idle { get { return idle; } }
 
     public bool Ready { get { return controls.AHold(); } }
 
-    private bool idle; // TODO Detect Activity or Idling by checking current controller axis and button states
-    public int playerNumber;
-    public Color color;
+    [SerializeField]
+    private int playerNumber;
+
+    [SerializeField]
+    private Color color;
+    public Color Color {
+        get { return color; }
+        private set { color = value; }
+    }
+
     public Character currentCharacter;
 
-    string leftAxisX;
-    string leftAxisY;
-    string rightAxisX;
-    string rightAxisY;
-    //string jumpButton = string.Format("Jump{0}", playerNumber);
-    string jumpButton;
-    string switchButton;
     Controls controls = new Controls();
     AudioSource audioSource;
 
@@ -34,19 +37,15 @@ public class Player : MonoBehaviour {
         idle = true;
     }
 
+    public void Init(int playerNumber, Color color) {
+        this.Color = color;
+        this.SetPlayerNumber(playerNumber);
+    }
+
     public void SetPlayerNumber(int playerNumber)
     {
         this.playerNumber = playerNumber;
         controls.SetJoystickID(playerNumber);
-
-        leftAxisX = string.Format("Joystick{0}LeftX", playerNumber);
-        leftAxisY = string.Format("Joystick{0}LeftY", playerNumber);
-        rightAxisX = string.Format("Joystick{0}RightX", playerNumber);
-        rightAxisY = string.Format("Joystick{0}RightY", playerNumber);
-        //string jumpButton = string.Format("Jump{0}", playerNumber);
-        jumpButton = "Jump";
-        //string switchButton = string.Format("Switch{0}", playerNumber);
-        switchButton = "Fire1";
     }
 	
 	// Update is called once per frame
@@ -57,8 +56,8 @@ public class Player : MonoBehaviour {
         }
 
         if (currentCharacter != null) {
-            Vector2 leftStick = new Vector2(Input.GetAxis(leftAxisX), Input.GetAxis(leftAxisY));
-            Vector2 rightStick = new Vector2(Input.GetAxis(rightAxisX), Input.GetAxis(rightAxisY));
+            Vector2 leftStick = new Vector2(controls.GetLeftAxisX(), controls.GetLeftAxisY());
+            Vector2 rightStick = new Vector2(controls.GetRightAxisX(), controls.GetRightAxisY());
 
             currentCharacter.moveLeftArm(leftStick);
             currentCharacter.moveRightArm(rightStick);
@@ -115,7 +114,7 @@ public class Player : MonoBehaviour {
         }
         currentCharacter = c;
         currentCharacter.hasPlayer = true;
-        currentCharacter.CharacterColor = color;
+        currentCharacter.CharacterColor = Color;
         currentCharacter.colorRenderer.enabled = true;
     }
 
