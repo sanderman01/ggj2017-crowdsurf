@@ -10,34 +10,13 @@ public class TitleScreen : MonoBehaviour {
 
     const string gameScene = "PrototypeSceneMerge";
 
-    [SerializeField]
-    private Color[] playerColors;
     public int MinActivePlayers = 2;
 
-    private Player[] players;
     private Character[] characters;
 
 	// Use this for initialization
 	void Start () {
-        FindOrCreatePlayers();
-    }
-
-    private void FindOrCreatePlayers() {
-        // Only create new players if they didn't already exist.
         characters = FindObjectsOfType<Character>();
-        players = FindObjectsOfType<Player>();
-        if (players.Length == 0) {
-            players = new Player[4];
-            GameObject obj = new GameObject("Players");
-            DontDestroyOnLoad(obj);
-            for (int i = 0; i < 4; ++i) {
-                Player player = obj.AddComponent<Player>();
-                player.SetPlayerNumber(i + 1);
-                player.color = playerColors[i];
-                player.Active = false;
-                players[i] = player;
-            }
-        }
     }
 	
 	// Update is called once per frame
@@ -51,7 +30,7 @@ public class TitleScreen : MonoBehaviour {
     private bool CheckPlayersReady() {
         int nActivePlayers = 0;
         bool allReady = true;
-        foreach(Player p in players) {
+        foreach(Player p in PlayerManager.Players) {
             if(p.Active) {
                 nActivePlayers += 1;
                 allReady = allReady && p.Ready;
@@ -67,7 +46,7 @@ public class TitleScreen : MonoBehaviour {
     /// Detect human players to activate and assign them a color and temporary character.
     /// </summary>
     void CheckPlayerActivity() {
-        foreach (Player p in players) {
+        foreach (Player p in PlayerManager.Players) {
             if (!p.Active && !p.Idle) {
                 // This player was not yet activated, but is now showing activity.
                 // Activate and assign it to a character, so the player can identify his own color and the basic game mechanics.
@@ -85,7 +64,7 @@ public class TitleScreen : MonoBehaviour {
     }
 
     private void GoToGameScene() {
-        foreach(Player p in players) {
+        foreach(Player p in PlayerManager.Players) {
             p.Detach();
         }
         UnityEngine.SceneManagement.SceneManager.LoadScene(gameScene);

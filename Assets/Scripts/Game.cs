@@ -25,33 +25,11 @@ public class Game : MonoBehaviour {
     /// </summary>
     private const string nextScene = "TitleScene";
 
-    [SerializeField]
-    private Color[] playerColors;
     AudioSource audiosource;
-
-    private Player[] players;
 
 	void Start () {
         audiosource = GetComponent<AudioSource>();
-        FindOrCreatePlayers();
         StartGameRound();
-    }
-
-    private void FindOrCreatePlayers() {
-        // Only create new players if they didn't already exist.
-        players = Object.FindObjectsOfType<Player>();
-        if (players.Length == 0) {
-            players = new Player[4];
-            GameObject obj = new GameObject("Players");
-            DontDestroyOnLoad(obj);
-            for (int i = 0; i < 4; ++i) {
-                Player player = obj.AddComponent<Player>();
-                player.SetPlayerNumber(i + 1);
-                player.color = playerColors[i];
-                player.Active = false;
-                players[i] = player;
-            }
-        }
     }
 
     void Update() {
@@ -64,7 +42,7 @@ public class Game : MonoBehaviour {
     /// Detect human players to activate and assign them a color and temporary character.
     /// </summary>
     void CheckPlayerActivity() {
-        foreach (Player p in players) {
+        foreach (Player p in PlayerManager.Players) {
             if (!p.Active && !p.Idle) {
                 // This player was not yet activated, but is now showing activity.
                 // Activate and assign it to a character, so the player can identify his own color and the basic game mechanics.
@@ -123,8 +101,7 @@ public class Game : MonoBehaviour {
         // Generate audience
         // Assign players to audience
         SwitchingCharacter switching = GameObject.FindObjectOfType<SwitchingCharacter>();
-        Player[] players = GameObject.FindObjectsOfType<Player>();
-        foreach (Player p in players) {
+        foreach (Player p in PlayerManager.Players) {
             if (p.Active) {
                 switching.SwitchForward(p);
             }
@@ -186,8 +163,7 @@ public class Game : MonoBehaviour {
         surfer.enabled = false;
 
         // Detach players from characters
-        Player[] players = GameObject.FindObjectsOfType<Player>();
-        foreach(Player p in players) {
+        foreach(Player p in PlayerManager.Players) {
             p.Detach();
         }
 
