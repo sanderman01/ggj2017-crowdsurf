@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
         set { active = value; }
     }
 
-    private bool idle;
+    private bool idle = true;
     public bool Idle { get { return idle; } }
 
     public bool Ready { get { return controls.AHold(); } }
@@ -34,7 +34,6 @@ public class Player : MonoBehaviour {
     void Start()
     {
         SetPlayerNumber(playerNumber);
-        idle = true;
     }
 
     public void Init(int playerNumber, Color color) {
