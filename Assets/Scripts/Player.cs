@@ -14,6 +14,9 @@ public class Player : MonoBehaviour {
     private bool idle = true;
     public bool Idle { get { return idle; } }
 
+    private float idleTime = 0;
+    public float IdleTime { get { return idleTime; } }
+
     public bool Ready { get { return controls.AHold(); } }
 
     [SerializeField]
@@ -49,10 +52,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (idle)
-        {
-            checkIdle();
-        }
+        CheckIdle();
 
         if (currentCharacter != null) {
             Vector2 leftStick = new Vector2(controls.GetLeftAxisX(), controls.GetLeftAxisY());
@@ -78,7 +78,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void checkIdle()
+    private void CheckIdle()
     {
         const float axisMargin = 0.5f;
         idle =
@@ -97,6 +97,12 @@ public class Player : MonoBehaviour {
             (Mathf.Abs(controls.GetLeftAxisX()) > axisMargin) ||
             (Mathf.Abs(controls.GetRightAxisY()) > axisMargin) ||
             (Mathf.Abs(controls.GetTrigger()) > axisMargin) );
+
+        if (idle) {
+            idleTime += Time.unscaledDeltaTime;
+        } else {
+            idleTime = 0;
+        }
     }
 
     /// <summary>
