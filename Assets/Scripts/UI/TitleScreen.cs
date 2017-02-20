@@ -10,6 +10,11 @@ public class TitleScreen : MonoBehaviour {
 
     const string gameScene = "PrototypeSceneMerge";
 
+    /// <summary>
+    /// Number of seconds until we assume this player is no longer active, and we will not consider him in the ready-up process.
+    /// </summary>
+    const float MaxIdleTime = 15;
+
     public int MinActivePlayers = 2;
 
     private Character[] characters;
@@ -31,9 +36,12 @@ public class TitleScreen : MonoBehaviour {
         int nActivePlayers = 0;
         bool allReady = true;
         foreach(Player p in PlayerManager.Players) {
-            if(p.Active) {
+            // only consider players that have been active in the past and were recently not idle
+            if(p.Active && p.IdleTime < MaxIdleTime) {
+                bool ready = p.Ready;
+                p.currentCharacter.SetReadyState(ready);
                 nActivePlayers += 1;
-                allReady = allReady && p.Ready;
+                allReady = allReady && ready;
             }
         }
 

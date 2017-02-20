@@ -36,6 +36,13 @@ public class Character : MonoBehaviour
     private Rigidbody2D leftArmRigidbody;
     private Rigidbody2D rightArmRigidbody;
 
+    [SerializeField]
+    private GameObject readyObj;
+
+    public void SetReadyState(bool value) {
+        readyObj.SetActive(value);
+    }
+
     private Color characterColor;
     public Color CharacterColor
     {
