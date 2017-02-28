@@ -27,6 +27,8 @@ public class PlayerManager : MonoBehaviour {
         playerColorMagenta
     };
 
+    private Sprite[] playerSymbols;
+
     [SerializeField]
     private Player[] players;
     public static IEnumerable<Player> Players { get { return Instance.players; } }
@@ -45,6 +47,14 @@ public class PlayerManager : MonoBehaviour {
     private void Init() {
         instance = this;
         DontDestroyOnLoad(gameObject);
+
+        playerSymbols = new Sprite[] {
+            Resources.Load<Sprite>("player-symbols/player-symbol-1"),
+            Resources.Load<Sprite>("player-symbols/player-symbol-3"),
+            Resources.Load<Sprite>("player-symbols/player-symbol-6"),
+            Resources.Load<Sprite>("player-symbols/player-symbol-10")
+        };
+
         CreatePlayers();
     }
 
@@ -58,7 +68,9 @@ public class PlayerManager : MonoBehaviour {
 
             int playerNumber = i + 1;
             Color playerColor = playerColors[i];
-            player.Init(playerNumber, playerColor);
+            Sprite playerSymbol = playerSymbols[i];
+            player.Init(playerNumber, playerColor, playerSymbol);
+            
 
             players[i] = player;
         }

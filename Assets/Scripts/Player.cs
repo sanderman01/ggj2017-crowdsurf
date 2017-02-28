@@ -29,6 +29,8 @@ public class Player : MonoBehaviour {
         private set { color = value; }
     }
 
+    public Sprite PlayerSymbol { get; private set; }
+
     public Character currentCharacter;
 
     Controls controls = new Controls();
@@ -39,9 +41,10 @@ public class Player : MonoBehaviour {
         SetPlayerNumber(playerNumber);
     }
 
-    public void Init(int playerNumber, Color color) {
+    public void Init(int playerNumber, Color color, Sprite playerSymbol) {
         this.Color = color;
         this.SetPlayerNumber(playerNumber);
+        this.PlayerSymbol = playerSymbol;
     }
 
     public void SetPlayerNumber(int playerNumber)
@@ -127,6 +130,7 @@ public class Player : MonoBehaviour {
         currentCharacter.hasPlayer = true;
         currentCharacter.CharacterColor = Color;
         currentCharacter.colorRenderer.enabled = true;
+        currentCharacter.PlayerSymbol = PlayerSymbol;
     }
 
     /// <summary>
@@ -137,6 +141,7 @@ public class Player : MonoBehaviour {
             currentCharacter.hasPlayer = false;
             currentCharacter.ResetColor();
             currentCharacter.colorRenderer.enabled = false;
+            currentCharacter.PlayerSymbol = null;
         }
         currentCharacter = null;
     }

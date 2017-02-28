@@ -39,6 +39,9 @@ public class Character : MonoBehaviour
     [SerializeField]
     private GameObject readyObj;
 
+    [SerializeField]
+    private SpriteRenderer playerSymbolRenderer;
+
     public void SetReadyState(bool value) {
         readyObj.SetActive(value);
     }
@@ -55,6 +58,19 @@ public class Character : MonoBehaviour
             indicatorColor.a = a;
             const string propName = "_TintColor";
             colorRenderer.material.SetColor(propName, indicatorColor);
+        }
+    }
+
+    public Sprite PlayerSymbol {
+        set {
+            Sprite s = value;
+            if(s == null) {
+                playerSymbolRenderer.enabled = false;
+            }
+            else {
+                playerSymbolRenderer.enabled = true;
+                playerSymbolRenderer.sprite = s;
+            }
         }
     }
 
